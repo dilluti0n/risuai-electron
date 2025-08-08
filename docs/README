@@ -1,0 +1,35 @@
+risuai-electron: An electron port for RisuAI
+============================================
+
+
+Why does this port exist?
+-------------------------
+
+The official release[1] for desktop is implemented using Tauri. While
+it might offer an acceptable experience on Windows and macOS, on Linux
+the performance is often poor enough to hinder comfortable use. This
+is primarily because it renders the UI with WebKitGTK, which is
+significantly slower and less optimized than Chromium-based
+engines. In addition, the official AppImage build does not bundle
+WebKitGTK, requiring users to install it manually, and there have been
+reports of libc version incompatibilities[2].
+
+Other provided release formats have their own limitations. The Docker
+build is optimized for web deployment and routes API calls through a
+private Node.js proxy, which is slower than sending patches directly
+from Electron’s built-in Node.js. It also suffers from filesystem
+access overhead inherent to Docker, leading to noticeable bottlenecks
+when opening long conversations. The web version hosted on risuai.xyz
+proxies all HTTP requests through the project’s own server, yet the
+proxy’s source code is not published despite the project’s GPL license
+and open-source claims. In some cases, traffic is redirected to a Hong
+Kong fallback server, which can cause failures with region-restricted
+Gemini APIs.
+
+This Electron port addresses these issues by bundling Chromium for
+consistent performance, avoiding external proxies, and enabling
+efficient local execution.
+
+
+[1] https://github.com/kwaroran/RisuAI/releases
+[2] https://github.com/kwaroran/RisuAI/issues/733
