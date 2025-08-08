@@ -4,7 +4,7 @@
 
 ## Why this port exists
 
-The official desktop release[1] of RisuAI is built with Tauri. On
+The official desktop release[^1] of RisuAI is built with Tauri. On
 Linux, performance of this release is often insufficient for smooth
 experience. This is mainly because Tauri renders the UI with
 WebKitGTK, which is slower and less optimized than Chromium-based
@@ -12,7 +12,7 @@ engines.
 
 The official AppImage build does not bundle WebKitGTK, requiring users
 to install it manually. Some users have also reported libc version
-mismatches[2].
+mismatches[^2].
 
 ---
 
@@ -46,7 +46,5 @@ mismatches[2].
 This results in a more stable and responsive RisuAI experience,
 especially on Linux.
 
----
-
-[1]: https://github.com/kwaroran/RisuAI/releases
-[2]: https://github.com/kwaroran/RisuAI/issues/733
+[^1]: https://github.com/kwaroran/RisuAI/releases
+[^2]: https://github.com/kwaroran/RisuAI/issues/733

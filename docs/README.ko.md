@@ -41,7 +41,5 @@ WebKitGTK를 사용하기 때문입니다.
 이를 통해 특히 Linux 환경에서 RisuAI를 더 안정적이고 빠르게 사용할 수
 있습니다.
 
----
-
-[1]: https://github.com/kwaroran/RisuAI/releases
-[2]: https://github.com/kwaroran/RisuAI/issues/733
+[^1]: https://github.com/kwaroran/RisuAI/releases
+[^2]: https://github.com/kwaroran/RisuAI/issues/733
