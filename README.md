@@ -14,8 +14,6 @@ The official AppImage build does not bundle WebKitGTK, requiring users
 to install it manually. Some users have also reported libc version
 mismatches[^2].
 
----
-
 ## Limitations of other release formats
 
 **Docker build**
@@ -34,8 +32,6 @@ mismatches[^2].
   project’s open-source branding.
 - In some cases, traffic is redirected to a Hong Kong fallback server,
   which may cause failures with region-restricted Gemini APIs.
-
----
 
 ## What this port changes
 
