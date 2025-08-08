@@ -1,15 +1,40 @@
 {
   "name": "risuai-electron",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "main.js",
+  "description": "electron port for RisuAI",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron .",
+    "dist": "electron-builder"
+  },
+  "build": {
+    "appId": "com.example.risuai-electron",
+    "asar": true,
+    "files": [
+      "main.js",
+      "dist/**/*",
+      "node_modules/**/*",
+      "package.json",
+      "RisuAI/dist/**/*"
+    ],
+    "win": {
+      "target": [
+        "portable"
+      ]
+    },
+    "linux": {
+      "target": [
+        "AppImage"
+      ]
+    }
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
   "devDependencies": {
-    "electron": "^37.2.6"
+    "electron": "^37.2.6",
+    "electron-builder": "^26.0.12"
   }
 }

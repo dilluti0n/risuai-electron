@@ -1,0 +1,4 @@
+[submodule "RisuAI"]
+	path = RisuAI
+	url = https://github.com/dilluti0n/RisuAI.git
+	branch = electron-port
