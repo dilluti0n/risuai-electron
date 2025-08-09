@@ -1,0 +1,25 @@
+#!/bin/bash
+# update & rebase submodule RisuAI
+# use this at project root (scripts/update-risuai)
+
+set -euo pipefail
+
+cd RisuAI
+git fetch upstream
+git switch electron-port
+
+before_sha=$(git rev-parse HEAD)
+echo ${before_sha}
+
+git rebase upstream/main
+git push --force-with-lease origin electron-port
+
+after_sha=$(git rev-parse HEAD)
+echo ${after_sha}
+
+cd ..
+git submodule update --remote RisuAI
+git add RisuAI
+git commit -m 'submodule: bump RisuAI electron-port after rebase' \
+    -m "upstream-before: ${before_sha}" \
+    -m "upstream-after: ${after_sha}" || true
