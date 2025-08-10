@@ -5,21 +5,23 @@
 set -euo pipefail
 
 cd RisuAI
+
 git fetch upstream
 git switch electron-port
 
-before_sha=$(git rev-parse HEAD)
+before_sha=$(git merge-base HEAD upstream/main)
 echo ${before_sha}
 
 git rebase upstream/main
-git push --force-with-lease origin electron-port
 
-after_sha=$(git rev-parse HEAD)
+after_sha=$(git merge-base HEAD upstream/main)
 echo ${after_sha}
+
+git push --force-with-lease origin electron-port
 
 cd ..
 git submodule update --remote RisuAI
 git add RisuAI
 git commit -m 'submodule: bump RisuAI electron-port after rebase' \
-    -m "upstream-before: ${before_sha}" \
-    -m "upstream-after: ${after_sha}" || true
+    -m "upstream-before: ${before_sha}
+upstream-after: ${after_sha}" || true
