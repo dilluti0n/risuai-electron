@@ -6,7 +6,10 @@ set -euo pipefail
 
 cd RisuAI
 
-git fetch upstream
+git diff --quiet || { echo "Dirty worktree in submodule"; exit 1; }
+git diff --cached --quiet || { echo "Staged changes exist"; exit 1; }
+
+git fetch --prune upstream
 git switch electron-port
 
 before_sha=$(git merge-base HEAD upstream/main)
@@ -17,6 +20,7 @@ git rebase upstream/main
 after_sha=$(git merge-base HEAD upstream/main)
 echo ${after_sha}
 
+git fetch --prune origin
 git push --force-with-lease origin electron-port
 
 cd ..
