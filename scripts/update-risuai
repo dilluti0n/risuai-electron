@@ -20,7 +20,6 @@ echo ${after_sha}
 git push --force-with-lease origin electron-port
 
 cd ..
-git submodule update --remote RisuAI
 git add RisuAI
 git commit -m 'submodule: bump RisuAI electron-port after rebase' \
     -m "upstream-before: ${before_sha}
