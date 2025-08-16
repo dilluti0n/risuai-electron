@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+set -e
+
+cd RisuAI
+pnpm run build
+
+cd ..
+npm run dist
