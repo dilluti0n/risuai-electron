@@ -1,0 +1,22 @@
+#!/bin/bash
+# After resolving the conflict when update-risuai
+# use this at project root (scripts/update-risuai)
+
+cd RisuAI
+
+before_sha=$(git merge-base HEAD upstream/main)
+echo ${before_sha}
+
+git rebase --continue
+
+after_sha=$(git merge-base HEAD upstream/main)
+echo ${after_sha}
+
+git fetch --prune origin
+git push --force-with-lease origin electron-port
+
+cd ..
+git add RisuAI
+git commit -m 'submodule: bump RisuAI electron-port after rebase' \
+    -m "upstream-before: ${before_sha}
+upstream-after: ${after_sha}" || true
